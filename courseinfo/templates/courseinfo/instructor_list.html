@@ -1,0 +1,19 @@
+{% extends 'courseinfo/base.html' %}
+
+{% block title %}
+    Instructor List
+{% endblock %}
+{% block content %}
+<h2>Instructor List</h2>
+    <ul>
+        {% for instructor in instructor_list %}
+            <li>
+            <a href="">{{ instructor }}</a>
+            </li>
+            {% empty %}
+                <li>
+                <em>There are currently no instructors available.</em>
+                </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
