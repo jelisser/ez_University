@@ -1,0 +1,29 @@
+{% extends 'courseinfo/base.html' %}
+
+{% block title %}
+    Instructor - {{ instructor.last_name }}
+{% endblock %}
+{% block content %}
+<h2>{{ instructor }}</h2>
+    <section>
+    <h3>First Name</h3>
+    <p>{{ instructor.first_name }}</p>
+    <h3>Last Name</h3>
+    <p>{{ instructor.last_name }}</p>
+    </section>
+
+    <section>
+    <h3>Sections</h3>
+    <ul>
+        {% for section in section_list %}
+            <li>
+            <a href="">{{ section }}</a>
+            </li>
+            {% empty %}
+                <li>
+                <em>There are currently no sections for this instructor.</em>
+                </li>
+        {% endfor %}
+    </ul>
+    </section>
+{% endblock %}
