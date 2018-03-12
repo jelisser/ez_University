@@ -9,9 +9,9 @@
     <h3>Section Name</h3>
     <p>{{ section.section_name }}</p>
     <h3>Semester</h3>
-        <p><a href="">{{ semester }}</a></p>
+        <p><a href="{{ semester.get_absolute_url }}">{{ semester }}</a></p>
     <h3>Course</h3>
-        <p><a href="">{{ course }}</a></p>
+        <p><a href="{{ course.get_absolute_url }}">{{ course }}</a></p>
     </section>
 
     <section>
@@ -19,7 +19,7 @@
     <ul>
         {% for instructor in instructor_list %}
             <li>
-            <a href="">{{ instructor }}</a>
+            <a href="{{ instructor.get_absolute_url }}">{{ instructor }}</a>
             </li>
             {% empty %}
                 <li>
@@ -34,7 +34,7 @@
     <ul>
         {% for student in student_list %}
             <li>
-            <a href="">{{ student }}</a>
+            <a href="{{ student.get_absolute_url }}">{{ student }}</a>
             </li>
             {% empty %}
                 <li>

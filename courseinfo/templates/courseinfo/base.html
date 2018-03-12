@@ -25,19 +25,19 @@
     <nav>
         <ul>
             <li>
-                <a href="">
+                <a href="{%url 'courseinfo_instructor_list_urlpattern' %}">
                     Instructors</a></li>
             <li>
-                <a href="">
+                <a href="{% url 'courseinfo_section_list_urlpattern' %}">
                     Sections</a></li>
             <li>
-                <a href="">
+                <a href="{% url 'courseinfo_course_list_urlpattern' %}">
                     Courses</a></li>
             <li>
-                <a href="">
+                <a href="{% url 'courseinfo_semester_list_urlpattern' %}">
                     Semesters</a></li>
             <li>
-                <a href="">
+                <a href="{% url 'courseinfo_student_list_urlpattern' %}">
                     Students</a></li>
         </ul>
     </nav>
