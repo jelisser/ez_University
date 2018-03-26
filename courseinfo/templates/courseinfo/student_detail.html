@@ -5,6 +5,18 @@
 {% endblock %}
 {% block content %}
 <h2>{{ student }}</h2>
+    <ul>
+        <li>
+            <a href ="{{ student.get_update_url }}">
+                Edit Student
+            </a>
+        </li>
+    <li>
+            <a href ="{{ student.get_delete_url }}">
+                Delete Student
+            </a>
+        </li>
+    </ul>
     <section>
     <h3>First Name</h3>
     <p>{{ student.first_name }}</p>

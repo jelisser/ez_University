@@ -5,6 +5,11 @@
 {% endblock %}
 {% block content %}
 <h2>Semester List</h2>
+    <div>
+        <a href="{% url 'courseinfo_semester_create_urlpattern' %}">
+            Create New Semester
+        </a>
+    </div>
     <ul>
         {% for semester in semester_list %}
             <li>

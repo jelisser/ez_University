@@ -5,6 +5,18 @@
 {% endblock %}
 {% block content %}
 <h2>{{ section }}</h2>
+    <ul>
+        <li>
+            <a href ="{{ section.get_update_url }}">
+                Edit Section
+            </a>
+        </li>
+    <li>
+            <a href ="{{ section.get_delete_url }}">
+                Delete Section
+            </a>
+        </li>
+    </ul>
     <section>
     <h3>Section Name</h3>
     <p>{{ section.section_name }}</p>

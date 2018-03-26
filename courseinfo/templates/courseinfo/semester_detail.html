@@ -5,6 +5,18 @@
 {% endblock %}
 {% block content %}
 <h2>{{ semester }}</h2>
+    <ul>
+        <li>
+            <a href ="{{ semester.get_update_url }}">
+                Edit Semester
+            </a>
+        </li>
+    <li>
+            <a href ="{{ semester.get_delete_url }}">
+                Delete Semester
+            </a>
+        </li>
+    </ul>
     <section>
     <h3>Semester </h3>
     <p>{{ semester.semester_name }}</p>

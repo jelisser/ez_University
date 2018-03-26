@@ -14,6 +14,14 @@ class Semester(models.Model):
                 kwargs = {'requested_semester_id': self.semester_id}
                 )
 
+    def get_update_url(self):
+        return reverse('courseinfo_semester_update_urlpattern',
+                       kwargs={'requested_semester_id': self.semester_id})
+
+    def get_delete_url(self):
+        return reverse('courseinfo_semester_delete_urlpattern',
+                       kwargs={'requested_semester_id': self.semester_id})
+
     class Meta:
         ordering = ['semester_name']
 
@@ -31,6 +39,14 @@ class Course(models.Model):
                 kwargs = {'requested_course_id': self.course_id}
                 )
 
+    def get_update_url(self):
+        return reverse('courseinfo_course_update_urlpattern',
+                       kwargs={'requested_course_id': self.course_id})
+
+    def get_delete_url(self):
+        return reverse('courseinfo_course_delete_urlpattern',
+                       kwargs={'requested_course_id': self.course_id})
+
     class Meta:
         ordering = ['course_number']
 
@@ -47,6 +63,14 @@ class Instructor(models.Model):
         return reverse('courseinfo_instructor_detail_urlpattern',
                 kwargs = {'requested_instructor_id': self.instructor_id}
                 )
+
+    def get_update_url(self):
+        return reverse('courseinfo_instructor_update_urlpattern',
+                       kwargs={'requested_instructor_id': self.instructor_id})
+
+    def get_delete_url(self):
+        return reverse('courseinfo_instructor_delete_urlpattern',
+                       kwargs={'requested_instructor_id': self.instructor_id})
 
     class Meta:
         ordering = ['last_name', 'first_name']
@@ -70,6 +94,14 @@ class Student(models.Model):
                 kwargs = {'requested_student_id': self.student_id}
                 )
 
+    def get_update_url(self):
+        return reverse('courseinfo_student_update_urlpattern',
+                       kwargs={'requested_student_id': self.student_id})
+
+    def get_delete_url(self):
+        return reverse('courseinfo_student_delete_urlpattern',
+                       kwargs={'requested_student_id': self.student_id})
+
     class Meta:
         ordering = ['last_name', 'first_name']
 
@@ -90,6 +122,14 @@ class Section(models.Model):
         return reverse('courseinfo_section_detail_urlpattern',
                 kwargs = {'requested_section_id': self.section_id}
                 )
+
+    def get_update_url(self):
+        return reverse('courseinfo_section_update_urlpattern',
+                       kwargs={'requested_section_id': self.section_id})
+
+    def get_delete_url(self):
+        return reverse('courseinfo_section_delete_urlpattern',
+                       kwargs={'requested_section_id': self.section_id})
 
     class Meta:
         ordering = ['course__course_number', 'section_name', 'semester__semester_name']
