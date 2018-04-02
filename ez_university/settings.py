@@ -25,7 +25,7 @@ SECRET_KEY = '6tj+ajmepv7#=0)r3bcq)2t)set3^r0rf!6q@crgnoqa$17n%d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['jelisser.pythonanywhere.com']
+ALLOWED_HOSTS = ['jelisser.pythonanywhere.com','127.0.0.1']
 
 
 # Application definition
