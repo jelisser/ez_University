@@ -2,57 +2,19 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http.response import HttpResponse
 from django.shortcuts import render, get_object_or_404, render_to_response, redirect
 from django.template import Context, loader
+from django.urls import reverse_lazy
 from django.views import View
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from courseinfo.forms import InstructorForm, SectionForm, CourseForm, SemesterForm, StudentForm
-from courseinfo.utils import ObjectCreateMixin
+from courseinfo.utils import PageLinksMixin
 from .models import Instructor, Section, Course, Semester, Student
 
 
-class InstructorList(View):
-    page_kwarg = 'page'
-    paginate_by = 25;
-    template_name = 'courseinfo/instructor_list.html'
+class InstructorList(PageLinksMixin,ListView):
+    paginate_by=25
+    model = Instructor
 
-    def get(self, request):
-        instructors = Instructor.objects.all()
-        paginator = Paginator(
-            instructors,
-            self.paginate_by
-        )
-        page_number = request.GET.get(
-            self.page_kwarg
-        )
-        try:
-            page = paginator.page(page_number)
-        except PageNotAnInteger:
-            page = paginator.page(1)
-        except EmptyPage:
-            page = paginator.page(
-                paginator.num_pages
-            )
-        if page.has_previous():
-            prev_url = "?{pkw}={n}".format(
-                pkw=self.page_kwarg,
-                n=page.previous_page_number()
-            )
-        else:
-            prev_url = None
-        if page.has_next():
-            next_url = "?{pkw}={n}".format(
-                pkw=self.page_kwarg,
-                n=page.next_page_number()
-            )
-        else:
-            next_url = None
-        context = {
-            'is_paginated': page.has_other_pages(),
-            'next_page_url': next_url,
-            'paginator': paginator,
-            'previous_page_url': prev_url,
-            'instructor_list': page,
-        }
-        return render(request, self.template_name, context)
 
 
 class InstructorDetail(View):
@@ -68,45 +30,16 @@ class InstructorDetail(View):
         )
 
 
-class InstructorCreate(ObjectCreateMixin, View):
-    form_class = InstructorForm
-    template_name = 'courseinfo/instructor_form.html'
+class InstructorCreate(CreateView):
+    form_class=InstructorForm
+    model=Instructor
 
 
-class InstructorUpdate(View):
-    form_class = InstructorForm
-    model = Instructor
-    template_name = 'courseinfo/instructor_form_update.html'
+class InstructorUpdate(UpdateView):
+    form_class=InstructorForm
+    model=Instructor
+    template_name='courseinfo/instructor_form_update.html'
 
-    def get_object(self, requested_instructor_id):
-        return get_object_or_404(
-            self.model,
-            instructor_id=requested_instructor_id
-        )
-
-    def get(self, request, requested_instructor_id):
-        instructor = self.get_object(requested_instructor_id)
-        context ={
-            'form':self.form_class(
-                instance=instructor),
-            'instructor': instructor,
-        }
-        return render(
-            request,self.template_name,context)
-
-    def post(self, request, requested_instructor_id):
-        instructor = self.get_object(requested_instructor_id)
-        bound_form = self.form_class(
-            request.POST, instance=instructor)
-        if bound_form.is_valid():
-            new_instructor = bound_form.save()
-            return redirect(new_instructor)
-        else:
-            context = {
-                'form':bound_form,
-                'instructor':instructor,
-            }
-            return render(request, self.template_name,context)
 
 
 class InstructorDelete(View):
@@ -140,13 +73,8 @@ class InstructorDelete(View):
         return redirect('courseinfo_instructor_list_urlpattern')
 
 
-class SectionList(View):
-    def get(self,request):
-        return render(
-            request,
-            'courseinfo/section_list.html',
-            {'section_list':Section.objects.all()}
-        )
+class SectionList(ListView):
+    model = Section
 
 
 class SectionDetail(View):
@@ -169,74 +97,24 @@ class SectionDetail(View):
         )
 
 
-class SectionCreate(ObjectCreateMixin, View):
-    form_class = SectionForm
-    template_name = 'courseinfo/section_form.html'
+class SectionCreate(CreateView):
+    form_class=SectionForm
+    model=Section
 
 
-class SectionUpdate(View):
-    form_class = SectionForm
+class SectionUpdate(UpdateView):
+    form_class=SectionForm
+    model=Section
+    template_name='courseinfo/section_form_update.html'
+
+class SectionDelete(DeleteView):
     model = Section
-    template_name = 'courseinfo/section_form_update.html'
-
-    def get_object(self, requested_section_id):
-        return get_object_or_404(
-            self.model,
-            section_id=requested_section_id
-        )
-
-    def get(self, request, requested_section_id):
-        section = self.get_object(requested_section_id)
-        context ={
-            'form':self.form_class(
-                instance=section),
-            'section': section,
-        }
-        return render(
-            request,self.template_name,context)
-
-    def post(self, request, requested_section_id):
-        section = self.get_object(requested_section_id)
-        bound_form = self.form_class(
-            request.POST, instance=section)
-        if bound_form.is_valid():
-            new_section = bound_form.save()
-            return redirect(new_section)
-        else:
-            context = {
-                'form':bound_form,
-                'section':section,
-            }
-            return render(request, self.template_name, context)
-
-class SectionDelete(View):
-
-    def get(self, request, requested_section_id):
-        section = get_object_or_404(
-            Section,
-            section_id=requested_section_id
-        )
-        return render(
-                request,
-                'courseinfo/section_confirm_delete.html',
-                {'section': section})
-
-    def post(self, request, requested_section_id):
-        section = get_object_or_404(
-                Section,
-                section_id=requested_section_id)
-        section.delete()
-        return redirect('courseinfo_section_list_urlpattern')
+    success_url=reverse_lazy('courseinfo_section_list_urlpatter')
 
 
 
-class CourseList(View):
-    def get(self,request):
-        return render(
-            request,
-            'courseinfo/course_list.html',
-            {'course_list':Course.objects.all()}
-        )
+class CourseList(ListView):
+    model = Course
 
 
 class CourseDetail(View):
@@ -252,45 +130,15 @@ class CourseDetail(View):
         )
 
 
-class CourseCreate(ObjectCreateMixin, View):
-    form_class = CourseForm
-    template_name = 'courseinfo/course_form.html'
+class CourseCreate(CreateView):
+    form_class=CourseForm
+    model=Course
 
 
-class CourseUpdate(View):
-    form_class = CourseForm
-    model = Course
-    template_name = 'courseinfo/course_form_update.html'
-
-    def get_object(self, requested_course_id):
-        return get_object_or_404(
-            self.model,
-            course_id=requested_course_id
-        )
-
-    def get(self, request, requested_course_id):
-        course = self.get_object(requested_course_id)
-        context ={
-            'form':self.form_class(
-                instance=course),
-            'course': course,
-        }
-        return render(
-            request,self.template_name,context)
-
-    def post(self, request, requested_course_id):
-        course = self.get_object(requested_course_id)
-        bound_form = self.form_class(
-            request.POST, instance=course)
-        if bound_form.is_valid():
-            new_course = bound_form.save()
-            return redirect(new_course)
-        else:
-            context = {
-                'form':bound_form,
-                'course':course,
-            }
-            return render(request, self.template_name, context)
+class CourseUpdate(UpdateView):
+    form_class=CourseForm
+    model=Course
+    template_name='courseinfo/course_form_update.html'
 
 
 class CourseDelete(View):
@@ -324,14 +172,8 @@ class CourseDelete(View):
         return redirect('courseinfo_course_list_urlpattern')
 
 
-class SemesterList(View):
-    def get(self,request):
-        return render(
-            request,
-            'courseinfo/semester_list.html',
-            {'semester_list':Semester.objects.all()}
-        )
-
+class SemesterList(ListView):
+    model = Semester
 
 class SemesterDetail(View):
     def get(self, request, requested_semester_id):
@@ -346,46 +188,16 @@ class SemesterDetail(View):
         )
 
 
-class SemesterCreate(ObjectCreateMixin, View):
-    form_class = SemesterForm
-    template_name = 'courseinfo/semester_form.html'
+class SemesterCreate(CreateView):
+    form_class=SemesterForm
+    model=Semester
 
 
-class SemesterUpdate(View):
-    form_class = SemesterForm
-    model = Semester
-    template_name = 'courseinfo/semester_form_update.html'
 
-    def get_object(self, requested_semester_id):
-        return get_object_or_404(
-            self.model,
-            semester_id=requested_semester_id
-        )
-
-    def get(self, request, requested_semester_id):
-        semester = self.get_object(requested_semester_id)
-        context ={
-            'form':self.form_class(
-                instance=semester),
-            'semester': semester,
-        }
-        return render(
-            request,self.template_name,context)
-
-    def post(self, request, requested_semester_id):
-        semester = self.get_object(requested_semester_id)
-        bound_form = self.form_class(
-            request.POST, instance=semester)
-        if bound_form.is_valid():
-            new_semester = bound_form.save()
-            return redirect(new_semester)
-        else:
-            context = {
-                'form':bound_form,
-                'semester':semester,
-            }
-            return render(request, self.template_name, context)
-
+class SemesterUpdate(UpdateView):
+    form_class=SemesterForm
+    model=Semester
+    template_name='courseinfo/semester_form_update.html'
 
 class SemesterDelete(View):
 
@@ -418,51 +230,9 @@ class SemesterDelete(View):
         return redirect('courseinfo_semester_list_urlpattern')
 
 
-class StudentList(View):
-    page_kwarg = 'page'
-    paginate_by = 25;
-    template_name = 'courseinfo/student_list.html'
-
-    def get(self, request):
-        students = Student.objects.all()
-        paginator = Paginator(
-            students,
-            self.paginate_by
-        )
-        page_number = request.GET.get(
-            self.page_kwarg
-        )
-        try:
-            page = paginator.page(page_number)
-        except PageNotAnInteger:
-            page = paginator.page(1)
-        except EmptyPage:
-            page = paginator.page(
-                paginator.num_pages
-            )
-        if page.has_previous():
-            prev_url = "?{pkw}={n}".format(
-                pkw=self.page_kwarg,
-                n = page.previous_page_number()
-            )
-        else:
-            prev_url = None
-        if page.has_next():
-            next_url = "?{pkw}={n}".format(
-                pkw = self.page_kwarg,
-                n=page.next_page_number()
-            )
-        else:
-            next_url = None
-        context ={
-            'is_paginated':page.has_other_pages(),
-            'next_page_url': next_url,
-            'paginator':paginator,
-            'previous_page_url': prev_url,
-            'student_list': page,
-        }
-        return render(request, self.template_name, context)
-
+class StudentList(PageLinksMixin, ListView):
+    paginate_by = 25
+    model = Student
 
 
 class StudentDetail(View):
@@ -478,45 +248,16 @@ class StudentDetail(View):
         )
 
 
-class StudentCreate(ObjectCreateMixin, View):
-    form_class = StudentForm
-    template_name = 'courseinfo/student_form.html'
+class StudentCreate(CreateView):
+    form_class=StudentForm
+    model=Student
 
 
-class StudentUpdate(View):
-    form_class = StudentForm
-    model = Student
-    template_name = 'courseinfo/student_form_update.html'
 
-    def get_object(self, requested_student_id):
-        return get_object_or_404(
-            self.model,
-            student_id=requested_student_id
-        )
-
-    def get(self, request, requested_student_id):
-        student = self.get_object(requested_student_id)
-        context ={
-            'form':self.form_class(
-                instance=student),
-            'student': student,
-        }
-        return render(
-            request, self.template_name,context)
-
-    def post(self, request, requested_student_id):
-        student = self.get_object(requested_student_id)
-        bound_form = self.form_class(
-            request.POST, instance=student)
-        if bound_form.is_valid():
-            new_student = bound_form.save()
-            return redirect(new_student)
-        else:
-            context = {
-                'form':bound_form,
-                'student':student,
-            }
-            return render(request, self.template_name, context)
+class StudentUpdate(UpdateView):
+    form_class=StudentForm
+    model=Student
+    template_name='courseinfo/student_form_update.html'
 
 
 class StudentDelete(View):

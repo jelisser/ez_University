@@ -5,12 +5,17 @@
 {% endblock %}
 
 {% block content %}
+<article>
+  <div class="row">
+  <div class="offset-by-two eight columns">
     <h2>{{ semester }}</h2>
-    <ul>
+    <ul class="inline">
         <li>
-          <a href="{{ semester.get_update_url }}">
+          <a href="{{ semester.get_update_url }}"
+          class="button">
             Edit Semester</a></li>
-          <a href="{{ semester.get_delete_url }}">
+          <a href="{{ semester.get_delete_url }}"
+          class="button">
             Delete Semester</a></li>
     </ul>
     <section>
@@ -30,4 +35,8 @@
             {% endfor %}
         </ul>
     </section>
+
+  </div></div> <!-- row -->
+
+</article>
 {% endblock %}

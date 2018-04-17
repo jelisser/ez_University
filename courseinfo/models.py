@@ -30,7 +30,7 @@ class Semester(models.Model):
 
     def get_update_url(self):
         return reverse('courseinfo_semester_update_urlpattern',
-                       kwargs={'requested_semester_id': self.semester_id}
+                       kwargs={'pk': self.semester_id}
         )
 
     def get_delete_url(self):
@@ -61,7 +61,7 @@ class Course(models.Model):
 
     def get_update_url(self):
         return reverse('courseinfo_course_update_urlpattern',
-                       kwargs={'requested_course_id': self.course_id}
+                       kwargs={'pk': self.course_id}
         )
 
     def get_delete_url(self):
@@ -89,7 +89,7 @@ class Instructor(models.Model):
 
     def get_update_url(self):
         return reverse('courseinfo_instructor_update_urlpattern',
-                       kwargs={'requested_instructor_id': self.instructor_id}
+                       kwargs={'pk': self.instructor_id}
         )
 
     def get_delete_url(self):
@@ -123,7 +123,7 @@ class Student(models.Model):
 
     def get_update_url(self):
         return reverse('courseinfo_student_update_urlpattern',
-                       kwargs={'requested_student_id': self.student_id}
+                       kwargs={'pk': self.student_id}
         )
 
     def get_delete_url(self):
@@ -155,13 +155,13 @@ class Section(models.Model):
 
     def get_update_url(self):
         return reverse('courseinfo_section_update_urlpattern',
-                       kwargs={'requested_section_id': self.section_id}
+                       kwargs={'pk': self.section_id}
         )
 
     def get_delete_url(self):
         return reverse(
             'courseinfo_section_delete_urlpattern',
-            kwargs={'requested_section_id': self.section_id}
+            kwargs={'pk': self.section_id}
         )
 
     class Meta:

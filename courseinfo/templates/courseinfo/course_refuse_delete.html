@@ -5,20 +5,24 @@
 {% endblock %}
 
 {% block content %}
-<div>
-    <h2>Error Deleting Course</h2>
-    <p>
-        You may not delete course {{ course }}.
-        This course is currently assigned to the following sections:
-    </p>
-    <ul>
-        {% for section in sections %}
-        <li><a href="{{ section.get_absolute_url }}">{{ section }}</a></li>
-        {% endfor %}
-    </ul>
+  <div class="row">
+    <div class="offset-by-two eight columns">
+        <h2>Error Deleting Course</h2>
+        <p>
+            You may not delete course {{ course }}.  This
+            course is currently associated with the following
+            sections:
+        </p>
 
-    <p>
-        Return to <a href="{%  url 'courseinfo_course_list_urlpattern' %}">Course List</a>
-    </p>
-</div>
+        <ul>
+            {% for section in sections %}
+            <li><a href="{{ section.get_absolute_url }}">{{ section }}</a></li>
+            {%  endfor %}
+        </ul>
+
+        <p>
+            Return to <a href="{% url 'courseinfo_course_list_urlpattern' %}">Course List</a>.
+        </p>
+    </div>
+  </div>
 {% endblock %}

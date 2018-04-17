@@ -5,14 +5,22 @@
 {% endblock %}
 
 {% block content %}
-    <form
-        action ="{{ semester.get_delete_url }}"
-        method ="post">
+  <div class="row">
+    <div class="offset-by-two eight columns">
+      <form
+          action="{{ semester.get_delete_url }}"
+          method="post">
         {% csrf_token %}
         <p>
-            Are you sure that you want to delete semester {{ semester }}?
+          Are you sure you want to delete
+          semester {{ semester }}?
         </p>
-        <a href="{{ semester.get_absolute_url }}">Cancel</a>
+        <a
+            href="{{ semester.get_absolute_url }}"
+            class="button button-primary">
+          Cancel</a>
         <button type="submit">Delete Semester</button>
-    </form>
+      </form>
+    </div>
+  </div>
 {% endblock %}

@@ -5,20 +5,24 @@
 {% endblock %}
 
 {% block content %}
-<div>
-    <h2>Error Deleting Instructor</h2>
-    <p>
-        You may not delete instructor {{ instructor }}.
-        This instructor is currently assigned to the following sections:
-    </p>
-    <ul>
-        {% for section in sections %}
-        <li><a href="{{ section.get_absolute_url }}">{{ section }}</a></li>
-        {% endfor %}
-    </ul>
+  <div class="row">
+    <div class="offset-by-two eight columns">
+        <h2>Error Deleting Instructor</h2>
+        <p>
+            You may not delete instructor {{ instructor }}.  This
+            instructor is currently assigned to the following
+            sections:
+        </p>
 
-    <p>
-        Return to <a href="{%  url 'courseinfo_instructor_list_urlpattern' %}">Instructor List</a>
-    </p>
-</div>
+        <ul>
+            {% for section in sections %}
+            <li><a href="{{ section.get_absolute_url }}">{{ section }}</a></li>
+            {%  endfor %}
+        </ul>
+
+        <p>
+            Return to <a href="{% url 'courseinfo_instructor_list_urlpattern' %}">Instructor List</a>.
+        </p>
+    </div>
+  </div>
 {% endblock %}

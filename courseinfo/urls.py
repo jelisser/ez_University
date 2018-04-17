@@ -29,7 +29,7 @@ urlpatterns = [
         InstructorCreate.as_view(),
         name='courseinfo_instructor_create_urlpattern'
         ),
-    url(r'instructor/(?P<requested_instructor_id>[\d]+)/update/$',
+    url(r'instructor/(?P<pk>[\d]+)/update/$',
         InstructorUpdate.as_view(),
         name='courseinfo_instructor_update_urlpattern'),
     url(r'instructor/(?P<requested_instructor_id>[\d]+)/delete/$',
@@ -47,10 +47,10 @@ urlpatterns = [
         SectionCreate.as_view(),
         name='courseinfo_section_create_urlpattern'
         ),
-    url(r'section/(?P<requested_section_id>[\d]+)/update/$',
+    url(r'section/(?P<pk>[\d]+)/update/$',
         SectionUpdate.as_view(),
         name='courseinfo_section_update_urlpattern'),
-    url(r'section/(?P<requested_section_id>[\d]+)/delete/$',
+    url(r'section/(?P<pk>[\d]+)/delete/$',
         SectionDelete.as_view(),
         name='courseinfo_section_delete_urlpattern'),
     url(r'^course/$',
@@ -64,7 +64,7 @@ urlpatterns = [
         CourseCreate.as_view(),
         name='courseinfo_course_create_urlpattern'
         ),
-    url(r'course/(?P<requested_course_id>[\d]+)/update/$',
+    url(r'course/(?P<pk>[\d]+)/update/$',
         CourseUpdate.as_view(),
         name='courseinfo_course_update_urlpattern'),
     url(r'course/(?P<requested_course_id>[\d]+)/delete/$',
@@ -81,7 +81,7 @@ urlpatterns = [
         SemesterCreate.as_view(),
         name='courseinfo_semester_create_urlpattern'
         ),
-    url(r'semester/(?P<requested_semester_id>[\d]+)/update/$',
+    url(r'semester/(?P<pk>[\d]+)/update/$',
         SemesterUpdate.as_view(),
         name='courseinfo_semester_update_urlpattern'),
     url(r'semester/(?P<requested_semester_id>[\d]+)/delete/$',
@@ -98,7 +98,7 @@ urlpatterns = [
         StudentCreate.as_view(),
         name='courseinfo_student_create_urlpattern'
         ),
-    url(r'student/(?P<requested_student_id>[\d]+)/update/$',
+    url(r'student/(?P<pk>[\d]+)/update/$',
         StudentUpdate.as_view(),
         name='courseinfo_student_update_urlpattern'),
     url(r'student/(?P<requested_student_id>[\d]+)/delete/$',

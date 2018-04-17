@@ -5,11 +5,18 @@
 {% endblock %}
 
 {% block content %}
+  <div class="row">
+    <div class="offset-by-two eight columns">
     <form
-        action ="{% url 'courseinfo_section_create_urlpattern' %}"
-        method ="post">
+        action="{% url 'courseinfo_section_create_urlpattern'%}"
+        method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type ="submit">Create Section</button>
+        <button
+                class="button-primary"
+                type="submit">
+                Create Section</button>
     </form>
+    </div>
+  </div>
 {% endblock %}

@@ -1,39 +1,49 @@
 {% extends 'courseinfo/base.html' %}
 
 {% block title %}
-    Course - {{course.course_name }}
+    Course - {{ course }}
 {% endblock %}
+
 {% block content %}
-<h2>{{ course }}</h2>
-    <ul>
+<article>
+  <div class="row">
+  <div class="offset-by-two eight columns">
+    <h2>{{ course }}</h2>
+    <ul class="inline">
         <li>
-            <a href ="{{ course.get_update_url }}">
-                Edit Course
-            </a>
-        </li>
+          <a
+              href="{{ course.get_update_url }}"
+              class="button">
+            Edit Course</a></li>
         <li>
-            <a href ="{{ course.get_delete_url }}">
-                Delete Course
-            </a>
-        </li>
+          <a
+              href="{{ course.get_delete_url }}"
+              class="button">
+            Delete Course</a></li>
     </ul>
     <section>
-    <h3>Course</h3>
-    <p>{{ course.course_name }}</p>
+        <h3>Course Number</h3>
+        <p>{{ course.course_number }}</p>
     </section>
 
     <section>
-    <h3>Sections</h3>
-    <ul>
-        {% for section in section_list %}
-            <li>
-            <a href="{{ section.get_absolute_url }}">{{ section }}</a>
-            </li>
-            {% empty %}
-                <li>
-                <em>There are currently no sections for this course.</em>
-                </li>
-        {% endfor %}
-    </ul>
+        <h3>Course Name</h3>
+        <p>{{ course.course_name }}</p>
     </section>
+
+    <section>
+        <h3>Sections</h3>
+        <ul>
+            {% for section in section_list %}
+                <li>
+                    <a href="{{ section.get_absolute_url }}">{{ section }}</a>
+                </li>
+            {% empty %}
+                <li><em>There are currently no sections for this course.</em></li>
+            {% endfor %}
+        </ul>
+    </section>
+  </div></div> <!-- row -->
+
+</article>
 {% endblock %}

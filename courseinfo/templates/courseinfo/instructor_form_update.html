@@ -5,11 +5,18 @@
 {% endblock %}
 
 {% block content %}
+   <div class="row">
+    <div class="offset-by-two eight columns">
     <form
-        action ="{{ instructor.get_update_url }}"
-        method ="post">
+        action="{{ instructor.get_update_url }}"
+        method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type ="submit">Update Instructor</button>
+        <button
+                class="button-primary"
+                type="submit">
+                Update Instructor</button>
     </form>
+    </div>
+  </div>
 {% endblock %}
