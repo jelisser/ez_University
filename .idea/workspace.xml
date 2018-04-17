@@ -1,51 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b11e0c46-367e-4938-8b00-2f0b5d0b72fd" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/courseinfo/static/courseinfo/logo.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/courseinfo/static/courseinfo/normalize.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/courseinfo/static/courseinfo/skeleton.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/courseinfo/static/courseinfo/style.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/about.html" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/models.py" afterPath="$PROJECT_DIR$/courseinfo/models.py" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/base.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/base.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/course_confirm_delete.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/course_confirm_delete.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/course_detail.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/course_detail.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/course_form.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/course_form.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/course_form_update.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/course_form_update.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/course_list.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/course_list.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/course_refuse_delete.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/course_refuse_delete.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/instructor_confirm_delete.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/instructor_confirm_delete.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/instructor_detail.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/instructor_detail.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/instructor_form.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/instructor_form.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/instructor_form_update.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/instructor_form_update.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/instructor_list.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/instructor_list.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/instructor_refuse_delete.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/instructor_refuse_delete.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/section_confirm_delete.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/section_confirm_delete.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/section_detail.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/section_detail.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/section_form.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/section_form.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/section_form_update.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/section_form_update.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/section_list.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/section_list.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/semester_confirm_delete.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/semester_confirm_delete.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/semester_detail.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/semester_detail.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/semester_form.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/semester_form.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/semester_form_update.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/semester_form_update.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/semester_list.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/semester_list.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/semester_refuse_delete.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/semester_refuse_delete.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/student_confirm_delete.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/student_confirm_delete.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/student_detail.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/student_detail.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/student_form.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/student_form.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/student_form_update.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/student_form_update.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/student_list.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/student_list.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/templates/courseinfo/student_refuse_delete.html" afterPath="$PROJECT_DIR$/courseinfo/templates/courseinfo/student_refuse_delete.html" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/urls.py" afterPath="$PROJECT_DIR$/courseinfo/urls.py" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/utils.py" afterPath="$PROJECT_DIR$/courseinfo/utils.py" />
-      <change beforePath="$PROJECT_DIR$/courseinfo/views.py" afterPath="$PROJECT_DIR$/courseinfo/views.py" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change beforePath="$PROJECT_DIR$/ez_university/urls.py" afterPath="$PROJECT_DIR$/ez_university/urls.py" />
-      <change beforePath="$PROJECT_DIR$/ez_university/views.py" afterPath="" />
-    </list>
+    <list default="true" id="b11e0c46-367e-4938-8b00-2f0b5d0b72fd" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -88,7 +44,7 @@
         <entry file="file://$PROJECT_DIR$/courseinfo/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="968">
-              <caret line="164" column="9" lean-forward="true" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
+              <caret line="164" column="9" lean-forward="false" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -759,7 +715,7 @@
         <state relative-caret-position="661">
           <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding>
-            <element signature="e#647#688#0" expanded="true" />
+            <element signature="e#647#688#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -785,7 +741,7 @@
     <entry file="file://$PROJECT_DIR$/courseinfo/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="968">
-          <caret line="164" column="9" lean-forward="true" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
+          <caret line="164" column="9" lean-forward="false" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
           <folding />
         </state>
       </provider>
