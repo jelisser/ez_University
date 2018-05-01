@@ -11,6 +11,9 @@ class CalendarPeriod(models.Model):
 
     class Meta:
         ordering = ['calendar_period_id']
+        permissions = (
+            ("view_calendarperiod", "Can view calendar period"),
+        )
 
 
 class Semester(models.Model):
@@ -43,6 +46,9 @@ class Semester(models.Model):
         # ordering = ['semester_name']  old version
         ordering = ['year', 'calendar_period__calendar_period_id'] # revised version
         unique_together = ('year', 'calendar_period')  # added
+        permissions = (
+            ("view_semester", "Can view semester"),
+        )
 
 
 
@@ -72,6 +78,9 @@ class Course(models.Model):
 
     class Meta:
         ordering = ['course_number']
+        permissions = (
+            ("view_course", "Can view course"),
+        )
 
 
 class Instructor(models.Model):
@@ -100,6 +109,9 @@ class Instructor(models.Model):
 
     class Meta:
         ordering = ['last_name', 'first_name']
+        permissions = (
+            ("view_instructor", "Can view instructor"),
+        )
 
 
 class Student(models.Model):
@@ -134,6 +146,9 @@ class Student(models.Model):
 
     class Meta:
         ordering = ['last_name', 'first_name']
+        permissions = (
+            ("view_student", "Can view student"),
+        )
 
 
 class Section(models.Model):
@@ -167,3 +182,6 @@ class Section(models.Model):
     class Meta:
         # ordering = ['course__course_number', 'section_name', 'semester__semester_name']
         ordering = ['course__course_number', 'section_name', 'semester']
+        permissions = (
+            ("view_section", "Can view section"),
+        )

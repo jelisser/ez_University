@@ -10,14 +10,18 @@
             <div class="offset-by-two eight columns">
                 <h2>{{ section }}</h2>
                 <ul class="inline">
+                    {% if perms.courseinfo.change_section %}
                     <li>
                         <a href="{{ section.get_update_url }}"
                            class="button">
                             Edit Section</a></li>
+                    {% endif %}
+                    {% if perms.courseinfo.delete_section %}
                     <li>
                         <a href="{{ section.get_delete_url }}"
                            class="button">
                             Delete Section</a></li>
+                    {% endif %}
                 </ul>
 
                 <section>

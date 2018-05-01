@@ -10,13 +10,18 @@
   <div class="offset-by-two eight columns">
     <h2>{{ student }}</h2>
     <ul class="inline">
+        {% if perms.courseinfo.change_student %}
         <li>
           <a href="{{ student.get_update_url }}"
           class="button">
             Edit Student</a></li>
+        {% endif %}
+        {% if perms.courseinfo.delete_student %}
+        <li>
           <a href="{{ student.get_delete_url }}"
           class="button">
             Delete Student</a></li>
+        {% endif %}
     </ul>
     <section>
         <h3>First Name</h3>

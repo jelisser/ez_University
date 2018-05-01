@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.contrib.auth import login
 from django.views.generic import RedirectView, TemplateView
 
 from courseinfo import urls as courseinfo_urls
+from django.contrib.auth import views as auth_views
 
 
 
@@ -25,14 +27,23 @@ from courseinfo import urls as courseinfo_urls
 urlpatterns = [
     url(r'^$',
         RedirectView.as_view(
-            pattern_name='courseinfo_section_list_urlpattern',
+            pattern_name='about_urlpattern',
             permanent=False
         )),
     url(r'^about/$',
         TemplateView.as_view(
             template_name='courseinfo/about.html'),
-        name='about_urlpattern'
+            name='about_urlpattern'
         ),
+    url(r'^login/$',
+        auth_views.login,
+        {'template_name': 'courseinfo/login.html'},
+        name='login_urlpattern'),
+    url(r'^logout/$',
+        auth_views.logout,
+        {'next_page':'/login/'},
+        name='logout_urlpattern'),
+
     url(r'^admin/', admin.site.urls),
     url(r'^', include(courseinfo_urls)),
 

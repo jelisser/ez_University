@@ -15,7 +15,7 @@
       src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
     </script><![endif]-->
     <link rel="stylesheet" type="text/css"
-          href="{% static 'coursinfo/normalize.css' %}">
+          href="{% static 'courseinfo/normalize.css' %}">
     <link rel="stylesheet" type="text/css"
           href="{% static 'courseinfo/skeleton.css' %}">
     <link rel="stylesheet" type="text/css"
@@ -26,32 +26,54 @@
 <body>
 
 <div class="container">
+    <div class ="status row">
+        <div class="offset-by-eight four columns">
+            <ul class="inline">
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'logout_urlpattern' %}">Log Out, {{ user.get_username }}</a></li>
+                {% else %}
+                <li><a href="{% url 'login_urlpattern' %}">Log In</a> </a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
     <header class="row">
         <div class="offset-by-one ten columns">
             <h1 class="logo">EZ University</h1>
-            <h2 class="logo">Course Information System</h2>
+            <h2>Course Information System</h2>
         </div>
     </header>
     <nav>
         <ul>
+            {% if perms.courseinfo.view_instructor %}
             <li>
                 <a href="{% url 'courseinfo_instructor_list_urlpattern' %}">
                     Instructors</a></li>
+                {% endif %}
+            {% if perms.courseinfo.view_section %}
             <li>
                 <a href="{% url 'courseinfo_section_list_urlpattern' %}">
                     Sections</a></li>
+                {% endif %}
+            {% if perms.courseinfo.view_course %}
             <li>
                 <a href="{% url 'courseinfo_course_list_urlpattern' %}">
                     Courses</a></li>
+                {% endif %}
+            {% if perms.courseinfo.view_semester %}
             <li>
                 <a href="{% url 'courseinfo_semester_list_urlpattern' %}">
                     Semesters</a></li>
+                {% endif %}
+            {% if perms.courseinfo.view_student%}
             <li>
                 <a href="{% url 'courseinfo_student_list_urlpattern' %}">
                     Students</a></li>
+            {% endif %}
             <li>
                 <a href="{% url 'about_urlpattern' %}">
                     About</a></li>
+
         </ul>
     </nav>
     {% if messages %}
